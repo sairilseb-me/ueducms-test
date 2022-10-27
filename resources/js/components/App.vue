@@ -1,3 +1,5 @@
 <template>
-    <h1>Dashboard</h1>
+    <v-app>
+        <router-view></router-view>
+    </v-app>
 </template>
