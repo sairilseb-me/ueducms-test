@@ -12,7 +12,7 @@ const routes = [
         name: 'cms-login'
     },
     {
-        path: 'cms/register',
+        path: '/cms/register',
         component: Register,
         name: 'cms-register'
     }
