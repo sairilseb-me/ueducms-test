@@ -24,7 +24,7 @@
                             <v-btn depressed class="primary px-15">Login</v-btn>
                         </v-row>
                     </v-card-actions>
-                    <p class="pl-3">No account yet? <router-link to="#">Register</router-link> </p>
+                    <p class="pl-3">No account yet? <router-link :to="{name: 'cms-register'}">Register</router-link> </p>
                 </v-card>
             </v-col>
         </v-row>
