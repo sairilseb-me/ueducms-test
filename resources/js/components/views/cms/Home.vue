@@ -1,37 +1,30 @@
 <template>
   <v-container fluid>
-    <v-app-bar depressed color="white">
-        <v-toolbar-title>EUDUCMS</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn text outlined>Sign out</v-btn>
-    </v-app-bar>
-
+    <navbar></navbar>
     <v-row class="justify-center mt-3">
         <v-col cols="12" md="10">
-          <v-card>
-            <v-card-title>
-              Person Data
+          <v-card flat>
+            <v-card-title color="grey">
+              Book List
               <v-spacer></v-spacer>
               <v-text-field prepend-icon="mdi-magnify" placeholder="Search">Search</v-text-field>
             </v-card-title>
-            <v-data-table
-              :headers="headers"
-              :items="personData"
-            >
-            <template v-slot:item="row">
-              <tr>
-                <td>{{ row.item.firstname }}</td>
-                <td>{{ row.item.lastname }}</td>
-                <td>{{ row.item.address }}</td>
-                <td>{{ row.item.phone }}</td>
-                <td>
-                  <v-btn depressed class="mx-2 text-black" small color="grey">View</v-btn>
-                  <v-btn depressed class="mx-2 text-black" small color="yellow">Edit</v-btn>
-                </td>
-
-              </tr>
-            </template>
-            </v-data-table>
+           <v-row class="mx-2">
+            <v-col cols="12" md="6" v-for="(book, index) in bookList" :key="index">
+              <v-card>
+                <v-card-title>{{ book.title }}</v-card-title>
+                <v-card-text class="pb-0">{{ book.content }}</v-card-text>
+                <div class="mx-2 py-3 d-flex justify-space-around">
+                  <v-chip small class="my-1" router to="#">Author: {{ book.author }}</v-chip>
+                  <v-chip small class="my-1">Category: {{ book.category }}</v-chip>
+                </div>
+                <v-card-action class="px-2 d-flex justify-space-between">
+                  <v-btn text class="primary mb-2"><v-icon>mdi-currency-usd</v-icon> Buy</v-btn>
+                  <v-btn text class="warning mb-2"><v-icon>mdi-cart-plus</v-icon> Add to Cart</v-btn>
+                </v-card-action>
+              </v-card>
+            </v-col>
+           </v-row>
           </v-card>
         </v-col>
     </v-row>
@@ -39,44 +32,63 @@
 </template>
 
 <script>
+
+import Navbar from '../UI/Navbar.vue';
 export default {
+  components: {
+    'navbar': Navbar,
+  },
     data: () => ({
-       personData: [
+      bookList: [
         {
-          firstname: 'Sairil',
-          lastname: 'Seberiaga',
-          address: 'San Miguel Jordan Guimaras',
-          phone: '0992928929890'
+          title: 'Test 1',
+          content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus necessitatibus quisquam veritatis non, natus impedit quibusdam delectus fuga molestiae itaque, at quae fugit culpa atque error facere minus tenetur numquam!',
+          author: 'Nobody 001',
+          category: 'horror',
+          published: '1985-01-02'
         },
         {
-          firstname: 'Jermaine',
-          lastname: 'Seberiaga',
-          address: 'San Miguel Jordan Guimaras',
-          phone: '0990292902902'
+          title: 'Test 2',
+          content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus necessitatibus quisquam veritatis non, natus impedit quibusdam delectus fuga molestiae itaque, at quae fugit culpa atque error facere minus tenetur numquam!',
+          author: 'Nobody 002',
+          category: 'adventure',
+          published: '1990-14-05'
+        },
+        {
+          title: 'Test 3',
+          content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus necessitatibus quisquam veritatis non, natus impedit quibusdam delectus fuga molestiae itaque, at quae fugit culpa atque error facere minus tenetur numquam!',
+          author: 'Nobody 003',
+          category: 'comedy',
+          published: '1990-14-05'
         }
-       ]
+      ]
     }),
     computed: {
      headers(){
       return [
         {
-          text: 'First Name',
-          value: 'firstname'
+          text: 'Title',
+          value: 'title'
         },
         {
-          text: 'Last Name',
-          value: 'lastname'
+          text: 'Category',
+          value: 'category'
         },
         {
-          text: 'Address',
-          value: 'address'
+          text: 'Author',
+          value: 'author'
         },
         {
-          text: 'Phone',
-          value: 'phone'
+          text: 'Publisher',
+          value: 'publisher'
         }
       ]
      }
+    },
+    methods: {
+      onClickView(item){
+        console.log(item.firstname)
+      }
     }
 }
 </script>
