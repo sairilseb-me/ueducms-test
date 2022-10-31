@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import CMSLogin from './components/views/cms/Login.vue';
 import Register from './components/views/cms/Register.vue';
+import Home from './components/views/cms/Home.vue';
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,13 @@ const routes = [
         path: '/cms/register',
         component: Register,
         name: 'cms-register'
+    },
+    {
+        path: '/cms',
+        component: Home,
+        name: 'cms-home'
     }
+
 ]
 
 export const router = new VueRouter({
