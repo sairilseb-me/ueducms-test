@@ -18,10 +18,10 @@
                   <v-chip small class="my-1" router to="#">Author: {{ book.author }}</v-chip>
                   <v-chip small class="my-1">Category: {{ book.category }}</v-chip>
                 </div>
-                <v-card-action class="px-2 d-flex justify-space-between">
+                <v-card-actions class="px-2 d-flex justify-space-between">
                   <v-btn text class="primary mb-2"><v-icon>mdi-currency-usd</v-icon> Buy</v-btn>
                   <v-btn text class="warning mb-2"><v-icon>mdi-cart-plus</v-icon> Add to Cart</v-btn>
-                </v-card-action>
+                </v-card-actions>
               </v-card>
             </v-col>
            </v-row>

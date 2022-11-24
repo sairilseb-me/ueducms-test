@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import CMSLogin from './components/views/cms/Login.vue';
 import Register from './components/views/cms/Register.vue';
 import Home from './components/views/cms/Home.vue';
+import PageControl from './components/views/cms/admin/PageControl.vue';
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
         path: '/cms',
         component: Home,
         name: 'cms-home'
+    },
+    {
+        path: '/cms/pages',
+        component: PageControl,
+        name: 'pages'
     }
 
 ]
